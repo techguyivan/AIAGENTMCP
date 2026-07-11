@@ -1,0 +1,14 @@
+{
+  "name": "aia-agent-playwright",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "install:playwright": "npx playwright install --with-deps"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
