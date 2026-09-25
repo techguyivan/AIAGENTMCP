@@ -1,0 +1,22 @@
+const { chromium } = require('@playwright/test');
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+  await page.locator('input#username, input[name="username"]').fill('rahulshettyacademy');
+  await page.locator('input#password, input[name="password"]').fill('Learning@830$3mK2');
+  await page.locator('label:has-text("Admin"), input[value="admin"], input#admin').first().click();
+  await page.locator('select').selectOption({ label: 'Student' });
+  await page.locator('input[type="checkbox"]').check();
+  await page.locator('input#signInBtn, button:has-text("Sign In"), input[value="Sign In"]').click();
+  await page.waitForTimeout(6000);
+  console.log('--- CART ICON TEXT ---');
+  const cartIcon = page.locator('a.cart-icon, .cart-icon, .cart');
+  console.log(await cartIcon.allTextContents());
+  console.log('--- BUTTON TEXTS ---');
+  console.log(await page.locator('button, a, input[type=button], input[type=submit]').allTextContents());
+  console.log('--- CARD HEADERS ---');
+  const cards = await page.locator('.card, .product, .product-card').allTextContents();
+  console.log(cards.slice(0,5));
+  await browser.close();
+})();
