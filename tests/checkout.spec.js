@@ -17,7 +17,7 @@ test.describe('Checkout flow', () => {
     await loginSuccessfully(page);
   });
 
-  test('As a shopper, I want to complete a purchase from the shop page so that I can finish my order successfully', async ({ page }) => {
+  test('As a shopper, I want to complete a purchase from the shop page so that I can finish my order successfully @regression @e2e', async ({ page }) => {
     const shopPage = new ShopPage(page);
     const checkoutPage = new CheckoutPage(page);
 

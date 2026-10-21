@@ -5,7 +5,7 @@ const VALID_USERNAME = 'rahulshettyacademy';
 const VALID_PASSWORD = 'Learning@830$3mK2';
 
 test.describe('LoginPage Practise', () => {
-  test('As a registered user, I want to sign in with valid credentials so that I can access the shop page', async ({ page }) => {
+  test('As a registered user, I want to sign in with valid credentials so that I can access the shop page @smoke', async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();
@@ -15,7 +15,7 @@ test.describe('LoginPage Practise', () => {
     await expect(page.locator('body')).toContainText('Shop');
   });
 
-  test('As a user, I want to stay on the login page when my credentials are invalid so that I can correct my details', async ({ page }) => {
+  test('As a user, I want to stay on the login page when my credentials are invalid so that I can correct my details @negative', async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();
@@ -26,7 +26,7 @@ test.describe('LoginPage Practise', () => {
     await expect(loginPage.passwordInput).toBeVisible();
   });
 
-  test('As a user, I want the app to block sign-in until I accept the terms so that I can comply with the required consent', async ({ page }) => {
+  test('As a user, I want the app to block sign-in until I accept the terms so that I can comply with the required consent @negative', async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();

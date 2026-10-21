@@ -5,7 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "test:headed": "playwright test --headed"
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:negative": "playwright test --grep @negative",
+    "test:login": "playwright test tests/login.spec.js",
+    "test:shop": "playwright test tests/shop.spec.js",
+    "test:checkout": "playwright test tests/checkout.spec.js",
+    "test:e2e": "playwright test --grep @e2e",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report playwright-report",
+    "test:file": "playwright test",
+    "test:chrome": "playwright test --project=chrome"
   },
   "keywords": [],
   "author": "",

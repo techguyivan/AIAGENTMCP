@@ -21,21 +21,20 @@ class LoginPage {
     await this.passwordInput.fill(password);
 
     if (!acceptTerms) {
-      await this.termsCheckbox.uncheck().catch(() => {});
+      await this.termsCheckbox.uncheck();
       return;
     }
 
     await this.termsCheckbox.check();
 
-    const dialogPromise = this.page.waitForEvent('dialog', { timeout: 5000 })
-      .then(async (dialog) => {
-        await dialog.accept();
-      })
-      .catch(() => {});
+    const acceptDialog = dialog => dialog.accept();
+    this.page.once('dialog', acceptDialog);
 
-    await this.signInButton.click();
-    await dialogPromise;
-    await this.page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    try {
+      await this.signInButton.click();
+    } finally {
+      this.page.off('dialog', acceptDialog);
+    }
   }
 
   async selectUserRole(role) {
